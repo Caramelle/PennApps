@@ -70,6 +70,10 @@ def analyse_text(data, endpoint):
 
 
 def get_phrases(file_name):
+    # empty file that will be written into
+    with open('keyWords.txt', 'w'):
+        pass
+
     for line in open(file_name, 'r'):
         keywords = get_keywords(line)
         concepts = get_concepts(line)
@@ -84,10 +88,7 @@ def get_phrases(file_name):
             write_file.write('\n')
 
 def main():
-    # empty file that will be written into
-    with open('keyWords.txt', 'w'):
-        pass
-    get_phrases('test.txt')
+    return 0
 
 if __name__ == '__main__':
     main()
