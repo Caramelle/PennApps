@@ -84,10 +84,11 @@ def get_phrases(file_name):
             for word in concepts:
                 write_file.write(', ' + word)
             if (len(keywords) == 0 and len(concepts) == 0):
-                write_file.write('NONE')
+                write_file.write(line.split('.')[0])
             write_file.write('\n')
 
 def main():
+    get_phrases('test.txt')
     return 0
 
 if __name__ == '__main__':
