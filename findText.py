@@ -20,6 +20,7 @@ SCOPES = 'https://www.googleapis.com/auth/presentations.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Google Slides API Python Quickstart'
 
+def url_to_presenationid(url)
 
 def get_credentials():
     home_dir = os.path.expanduser('~')
@@ -41,13 +42,13 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
-def main():
+def find_text(url):
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('slides', 'v1', http=http)
     presentationText = []
 
-    presentationId = '1EAYk18WDjIG-zp_0vLm3CsfQh_i8eXc67Jo2O9C6Vuc'
+    presentationId = url_to_presenationid(url)
     presentation = service.presentations().get(
         presentationId=presentationId).execute()
     slides = presentation.get('slides')

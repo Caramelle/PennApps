@@ -1,4 +1,5 @@
 import giphypop
+import analysis
 
 g = giphypop.Giphy()
 gifs = []
