@@ -10,22 +10,23 @@ def fetch_gifs(url) :
 	find_text(url)
 
 	gifs = []
-	print("blah")
 	slide_keywords = get_phrases("slideTexts.txt")
-	print(slide_keywords)
 
 	for slide in slide_keywords:
 		gifs.append([])
 		list_size = len(slide)
 		if (list_size == 0):
-			pass
+			continue
 
 		# select 9 gifs for every slide
 		for i in range (0,9):
 			gif_phrase = slide[i % list_size]
 			image = giphypop.translate(gif_phrase)
+			if (image is None):
+				i -= 1
+				continue
 			gifs[-1].append(image.fixed_height.downsampled.url)
 			del image
-	print gifs
+	return gifs
 
 fetch_gifs('https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit')

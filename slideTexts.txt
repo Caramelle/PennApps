@@ -1,25 +1,26 @@
 Perimeter and area
-What are we going to do today?Learn what a perimeter is and calculate the perimeter of different shapes
 What is perimeter?
 The perimeter is the distance around the edge of a shape. 4 m4 m4 m3 m6 m6 m3 m2 m2 m2 m2 m2  m
 The perimeter is the distance around the edge of a shape. 4 m4 m4 m3 m6 m6 m3 m2 m2 m2 m2 m2  m4 + 4 +4 = 12 m
 The perimeter is the distance around the edge of a shape. 4 m4 m4 m3 m6 m6 m3 m2 m2 m2 m2 m2  m4 + 4 + 4 = 12 m6 + 3 + 6 + 3 = 18 m
 The perimeter is the distance around the edge of a shape. 4 m4 m4 m3 m6 m6 m3 m2 m2 m2 m2 m2  m4 + 4 + 4 = 12 m6 + 3 + 6 + 3 = 18 m2 x 5 = 10 m
-What would be the perimeter of this shape?8 mm 10 mm 5 mm 6 mm 
-What would be the perimeter of this shape?8 mm 10 mm 5 mm 6 mm 10 + 6 = 16  mm 
+What would be the perimeter of this shape?8 mm 10 mm 5 mm 6 mm
+What would be the perimeter of this shape?8 mm 10 mm 5 mm 6 mm 10 + 6 = 16  mm
+
 What would be the perimeter of this shape?8 mm 10 mm 5 mm 6 mm 16  mm 8 - 5 = 3 mm
-What would be the perimeter of this shape?8 mm 10 mm 5 mm 6 mm 16  mm  8 mm Perimeter = 10 + 5 + 6 + 3 + 16 + 8 =  48 mm 
+What would be the perimeter of this shape?8 mm 10 mm 5 mm 6 mm 16  mm  8 mm Perimeter = 10 + 5 + 6 + 3 + 16 + 8 =  48 mm
 What is area?
-Area is the size of a surface. This is the amount of space inside the boundaries of a shape. 
-We can find the area of different shapes by counting squares! 
+Area is the size of a surface. This is the amount of space inside the boundaries of a shape.
+We can find the area of different shapes by counting squares!
 What is the perimeter of this shape?
-To calculate the perimeter, we count the squares around the edges of the shape. 
-To calculate the area, we can count the number of squares inside the shape. 
-We have 4 unit squares in each row, and we have 4 rows in total. 
-We have 4 unit squares in each row, and we have 4 rows in total. 
+To calculate the perimeter, we count the squares around the edges of the shape.
+To calculate the area, we can count the number of squares inside the shape.
+We have 4 unit squares in each row, and we have 4 rows in total.
+We have 4 unit squares in each row, and we have 4 rows in total.
 We can find the area of squares and rectangles by multiplying side-lengths. We use the formula below:4 cm4 cm8 cm
 Area = length x width Area = 4 x 4 = 16 cm4 cm8 cm4 cmArea = 4 x 8 = 32 cm
 Can you figure out what the formula would be for a triangle?
 
 Area = (4 * 5 )/ 24 cm5 cm
-We can apply area and perimeter to solve problems...Isabella is making a display board for the school trip. The display board is a 50 cm by 20 cm rectangle. She needs to add a ribbon border around the entire display board. What is the length of ribbon that she needs? 
+
+We can apply area and perimeter to solve problems...Isabella is making a display board for the school trip. The display board is a 50 cm by 20 cm rectangle. She needs to add a ribbon border around the entire display board. What is the length of ribbon that she needs?
