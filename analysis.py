@@ -87,7 +87,7 @@ def get_phrases(file_name):
     return result
 
 def main():
-    print(get_phrases('test.txt'))
+    # print(get_phrases('test.txt'))
     return 0
 
 if __name__ == '__main__':
