@@ -21,10 +21,16 @@ def fetch_gifs(url) :
 		# select 9 gifs for every slide
 		for i in range (0,9):
 			gif_phrase = slide[i % list_size]
-			image = giphypop.translate(gif_phrase)
-			if (image is None):
+			try:
+				image = giphypop.translate(gif_phrase)
+				if (image is None):
+					i -= 1
+					continue
+				gifs[-1].append(image.fixed_height.downsampled.url)
+				del image
+			except Exception as e:
 				i -= 1
-				continue
-			gifs[-1].append(image.fixed_height.downsampled.url)
-			del image
+				print(e)
 	return gifs
+
+fetch_gifs("https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit?usp=sharing")
