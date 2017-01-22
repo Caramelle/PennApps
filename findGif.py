@@ -1,11 +1,31 @@
 import giphypop
-import analysis
+from analysis import get_phrases
+from findText import find_text
 
-g = giphypop.Giphy()
-gifs = []
-keyword = 'coffee'
-for i in range (0,9):
-	image = giphypop.translate(keyword)
-	gifs.append(image.fixed_height.downsampled.url)
-	del image
-print gifs
+def fetch_gifs(url) :
+	g = giphypop.Giphy()
+
+	# scrape slides for text.
+	# results are written into "slideTexts.txt".
+	find_text(url)
+
+	gifs = []
+	print("blah")
+	slide_keywords = get_phrases("slideTexts.txt")
+	print(slide_keywords)
+
+	for slide in slide_keywords:
+		gifs.append([])
+		list_size = len(slide)
+		if (list_size == 0):
+			pass
+
+		# select 9 gifs for every slide
+		for i in range (0,9):
+			gif_phrase = slide[i % list_size]
+			image = giphypop.translate(gif_phrase)
+			gifs[-1].append(image.fixed_height.downsampled.url)
+			del image
+	print gifs
+
+fetch_gifs('https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit')

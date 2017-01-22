@@ -50,12 +50,18 @@ def get_credentials():
     return credentials
 
 def find_text(url):
+    # clean the text file first
+    with open("slideTexts.txt", "w"):
+        pass
+
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('slides', 'v1', http=http)
     presentationText = []
 
     presentationId = url_to_presenationId(url)
+    print(presentationId)
+    print()
     presentation = service.presentations().get(
         presentationId=presentationId).execute()
     slides = presentation.get('slides')
@@ -69,8 +75,11 @@ def find_text(url):
                     textElements = text['textElements']
                     writing = textElements[1]['textRun']
                     content = writing['content']
+                    content = content.replace('\n', '')
                     with open("slideTexts.txt", "a") as myfile:
                         myfile.write(content)
+        with open("slideTexts.txt", "a") as myfile:
+            myfile.write('\n')
 
 def add_image(url, image_url, page_id):
     credentials = get_credentials()
@@ -114,4 +123,4 @@ def add_image(url, image_url, page_id):
     create_image_response = response.get('replies')[0].get('createImage')
     print('Created image with ID: {0}'.format(create_image_response.get('objectId')))
 
-add_image("https://docs.google.com/presentation/d/1BUUh7a92Smqvis_ht0XZZl9BqwKfKkkpUTn9F9Fo8no/edit", "http://media0.giphy.com/media/26uffErnoIpeQ3PmU/200_d.gif", 0)
+# add_image("https://docs.google.com/presentation/d/1BUUh7a92Smqvis_ht0XZZl9BqwKfKkkpUTn9F9Fo8no/edit", "http://media0.giphy.com/media/26uffErnoIpeQ3PmU/200_d.gif", 0)
