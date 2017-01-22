@@ -2,6 +2,7 @@ from __future__ import print_function
 import httplib2
 import os
 import json
+import string
 
 from apiclient import discovery
 from oauth2client import client
@@ -72,12 +73,16 @@ def find_text(url):
                 if "shape" in element:
                     shape = element.get('shape')
                     text = shape.get('text')
-                    textElements = text['textElements']
-                    writing = textElements[1]['textRun']
-                    content = writing['content']
-                    content = content.replace('\n', '')
-                    with open("slideTexts.txt", "a") as myfile:
-                        myfile.write(content)
+                    print("before")
+                    if (text is not None):
+                        print("after")
+                        textElements = text['textElements']
+                        writing = textElements[1]['textRun']
+                        content = writing['content']
+                        content = content.replace('\n', '')
+                        content = filter(lambda x: x in string.printable, content)
+                        with open("slideTexts.txt", "a") as myfile:
+                            myfile.write(content)
         with open("slideTexts.txt", "a") as myfile:
             myfile.write('\n')
 
