@@ -27,9 +27,9 @@ def get_credentials():
 
     # If modifying these scopes, delete your previously saved credentials
     # at ~/.credentials/slides.googleapis.com-python-quickstart.json
-    SCOPES = 'https://www.googleapis.com/auth/presentations'
+    SCOPES = ['https://www.googleapis.com/auth/presentations']
     CLIENT_SECRET_FILE = 'client_secret.json'
-    APPLICATION_NAME = 'Google Slides API Python Quickstart'
+    APPLICATION_NAME = 'PennApps'
 
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
@@ -64,6 +64,7 @@ def find_text(url):
     presentation = service.presentations().get(
         presentationId=presentationId).execute()
     slides = presentation.get('slides')
+
     for i, slide in enumerate(slides):
         elements = slide.get('pageElements')
         for element in elements:
@@ -84,14 +85,27 @@ def find_text(url):
         with open("slideTexts.txt", "a") as myfile:
             myfile.write('\n')
 
-def add_image(url, image_url, page_id):
+def find_page_id(presentationId, slideNo):
+    credentials = get_credentials()
+    http = credentials.authorize(httplib2.Http())
+    service = discovery.build('slides', 'v1', http=http)
+
+    presentation = service.presentations().get(
+        presentationId=presentationId).execute()
+    slides = presentation.get('slides')
+    pageId = slides[slideNo]['objectId']
+    return pageId
+
+
+def add_image(url, image_url, slideNo):
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('slides', 'v1', http=http)
 
     presentationId = url_to_presenationId(url)
+    page_id = find_page_id(presentationId, slideNo)
     requests = []
-    image_id = 'MyImage_01'
+    image_id = 'MyImage_01'+str(page_id)
     emu4M = {
         'magnitude': 4000000,
         'unit': 'EMU'
@@ -124,7 +138,7 @@ def add_image(url, image_url, page_id):
     response = service.presentations().batchUpdate(presentationId=presentationId,
                                                           body=body).execute()
     create_image_response = response.get('replies')[0].get('createImage')
-    print('Created image with ID: {0}'.format(create_image_response.get('objectId')))
+    #print('Created image with ID: {0}'.format(create_image_response.get('objectId')))
 
-find_text("https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit")
-# add_image("https://docs.google.com/presentation/d/1BUUh7a92Smqvis_ht0XZZl9BqwKfKkkpUTn9F9Fo8no/edit", "http://media0.giphy.com/media/26uffErnoIpeQ3PmU/200_d.gif", 0)
+#find_text("https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit")
+#add_image("https://docs.google.com/presentation/d/1BUUh7a92Smqvis_ht0XZZl9BqwKfKkkpUTn9F9Fo8no/edit", "http://media0.giphy.com/media/26uffErnoIpeQ3PmU/200_d.gif", 0)
