@@ -73,9 +73,7 @@ def find_text(url):
                 if "shape" in element:
                     shape = element.get('shape')
                     text = shape.get('text')
-                    print("before")
                     if (text is not None):
-                        print("after")
                         textElements = text['textElements']
                         writing = textElements[1]['textRun']
                         content = writing['content']
