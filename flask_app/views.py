@@ -4,7 +4,6 @@ from models import add_gif, get_gifs, star_gif, get_starred, add_user, get_user,
 
 @app.route('/')
 def index():
-    #clear_db()
     user_id = session.get('Gifiphy')
     if not user_id or not get_user(user_id):
         new_id = add_user()
