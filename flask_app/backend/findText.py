@@ -1,7 +1,6 @@
 from __future__ import print_function
 import httplib2
 import os
-import json
 import string
 import random
 from apiclient import discovery
@@ -58,7 +57,6 @@ def find_text(url):
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('slides', 'v1', http=http)
-    presentationText = []
 
     presentationId = url_to_presenationId(url)
     presentation = service.presentations().get(
