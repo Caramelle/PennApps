@@ -75,12 +75,14 @@ def find_text(url):
                     text = shape.get('text')
                     if (text is not None):
                         textElements = text['textElements']
-                        writing = textElements[1]['textRun']
-                        content = writing['content']
-                        content = content.replace('\n', '')
-                        content = filter(lambda x: x in string.printable, content)
-                        with open("slideTexts.txt", "a") as myfile:
-                            myfile.write(content)
+                        for elem in textElements:
+                            if 'textRun' in elem:
+                                writing = elem['textRun']
+                                content = writing['content']
+                                content = content.replace('\n', '')
+                                content = filter(lambda x: x in string.printable, content)
+                                with open("slideTexts.txt", "a") as myfile:
+                                    myfile.write(content)
         with open("slideTexts.txt", "a") as myfile:
             myfile.write('\n')
 
@@ -126,4 +128,5 @@ def add_image(url, image_url, page_id):
     create_image_response = response.get('replies')[0].get('createImage')
     print('Created image with ID: {0}'.format(create_image_response.get('objectId')))
 
+find_text("https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit")
 # add_image("https://docs.google.com/presentation/d/1BUUh7a92Smqvis_ht0XZZl9BqwKfKkkpUTn9F9Fo8no/edit", "http://media0.giphy.com/media/26uffErnoIpeQ3PmU/200_d.gif", 0)
