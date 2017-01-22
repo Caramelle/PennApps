@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='imrow'>
+    {% for gif in gifs %}
+    <img class="endimg" src="{{gif.url}}" alt="..." class="img-rounded">
+    {% endfor %}
+</div>
+
+<div class='row'>
+    <div class='col-xs-12 text-center'>
+        <a href="{{link}}" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-download-alt"></i> Download the Awesomeness</a>
+    </div>
+</div>
+{% endblock %}
