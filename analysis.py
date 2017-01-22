@@ -70,25 +70,24 @@ def analyse_text(data, endpoint):
 
 
 def get_phrases(file_name):
-    # empty file that will be written into
-    with open('keyWords.txt', 'w'):
-        pass
+    result = []
 
     for line in open(file_name, 'r'):
+        result.append([])
+        if (line == "") : pass
         keywords = get_keywords(line)
         concepts = get_concepts(line)
-        with open('keyWords.txt', 'a') as write_file:
-            for word in keywords:
-                if (word != keywords[0]): write_file.write(', ')
-                write_file.write(word)
-            for word in concepts:
-                write_file.write(', ' + word)
-            if (len(keywords) == 0 and len(concepts) == 0):
-                write_file.write(line.split('.')[0])
-            write_file.write('\n')
+        for word in keywords:
+            result[-1].append(word)
+        for word in concepts:
+            result[-1].append(word)
+        if (len(keywords) == 0 and len(concepts) == 0):
+            result[-1].append(line.split('.')[0])
+
+    return result
 
 def main():
-    get_phrases('test.txt')
+    print(get_phrases('test.txt'))
     return 0
 
 if __name__ == '__main__':
