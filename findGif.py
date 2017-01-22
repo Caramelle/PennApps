@@ -28,5 +28,3 @@ def fetch_gifs(url) :
 			gifs[-1].append(image.fixed_height.downsampled.url)
 			del image
 	return gifs
-
-fetch_gifs('https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit')
