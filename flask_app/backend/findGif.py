@@ -33,4 +33,4 @@ def fetch_gifs(url) :
 				print(e)
 	return gifs
 
-fetch_gifs("https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit?usp=sharing")
+# fetch_gifs("https://docs.google.com/presentation/d/12yAQx0zVYam0Dlyg4C2P-eWLPFFvRd4U6AcWc2W-NIU/edit?usp=sharing")

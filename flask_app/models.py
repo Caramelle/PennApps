@@ -6,7 +6,6 @@ class Gifs(db.Model):
 
     url = db.Column(db.String)
     number = db.Column(db.Integer)
-    starred = db.Column(db.Boolean)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('Users', back_populates='gifs')
@@ -17,7 +16,6 @@ class Gifs(db.Model):
     def __init__(self, url, number, user):
         self.url = url
         self.number = number
-        self.starred = False
         self.user = user
 
 class Users(db.Model):
@@ -29,7 +27,7 @@ class Users(db.Model):
     current_slide = db.Column(db.Integer)
     current_max = db.Column(db.Integer)
 
-    presentation_id = db.Column(db.Integer)
+    presentation_url = db.Column(db.String)
 
     def __init__(self):
         self.current_slide = 0
@@ -52,20 +50,17 @@ def add_gif(url, slide, user):
     db.session.commit()
     return
 
+def get_gif(id):
+    g = Gifs.query.get(id)
+    if not g:
+        return False
+    return g
+
 def get_gifs(user):
     slide = user.current_slide
     gifs = Gifs.query.filter(Gifs.number==slide).all()
     user.current_slide += 1
     return gifs
-
-def star_gif(id):
-    g = Gifs.query.get(id)
-    g.starred = True
-    db.session.commit()
-    return
-
-def get_starred(user):
-    return [(g.number, g.url) for g in Gifs.query.filter(Gifs.starred, Gifs.user == user).all()]
 
 def clear_db(user):
     u = get_user(user)
