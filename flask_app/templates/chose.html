@@ -6,4 +6,9 @@
     </div>
 </div>
 {% include 'carousel.html' %}
+<div class='row'>
+    <div class='col-xs-12 text-center'>
+        <a href='{{url_for("add_to_presentation",id=-1)}}' class="btn btn-large btn-danger"><span class='glyphicon glyphicon-remove'></span> Skip</a>
+    </div>
+</div>
 {% endblock %}
