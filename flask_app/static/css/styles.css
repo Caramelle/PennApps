@@ -10,10 +10,11 @@ body {
     padding: 18px 28px;
     font-size: 400px;
     line-height: normal;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 300px;
-    margin-top: 125px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+    margin-top: 90px;
+    margin-bottom: 35px;
 }
 
 #logo {

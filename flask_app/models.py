@@ -58,8 +58,9 @@ def get_gif(id):
 
 def get_gifs(user):
     slide = user.current_slide
-    gifs = Gifs.query.filter(Gifs.number==slide).all()
+    gifs = Gifs.query.filter(Gifs.number==slide, Gifs.user == user).all()
     user.current_slide += 1
+    db.session.commit()
     return gifs
 
 def clear_db(user):

@@ -3,7 +3,7 @@ import httplib2
 import os
 import json
 import string
-
+import random
 from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
@@ -105,7 +105,7 @@ def add_image(url, image_url, slideNo):
     presentationId = url_to_presenationId(url)
     page_id = find_page_id(presentationId, slideNo)
     requests = []
-    image_id = 'MyImage_01'+str(page_id)
+    image_id = 'Image_'+str(page_id) + '_' + str(random.randint(1,100))
     emu4M = {
         'magnitude': 4000000,
         'unit': 'EMU'

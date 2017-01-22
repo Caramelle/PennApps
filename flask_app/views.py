@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, session
-from flask_app import app
+from flask_app import app, db
 from models import add_gif, get_gifs, add_user, get_user, clear_db, get_gif
 from flask_app.backend import findGif, findText
 
@@ -36,20 +36,27 @@ def search():
 @app.route('/chose')
 def chose():
     user = get_user(session.get('Gifiphy'))
+    if user.current_slide == user.current_max:
+        return redirect(url_for('download'))
+
     gifs = get_gifs(user)
+    if not gifs:
+        return redirect(url_for('chose'))
+
     return render_template('chose.html', gifs=gifs) 
 
 @app.route('/add_to_presentation/<id>')
 def add_to_presentation(id):
-    g = get_gif(id)
     user = get_user(session.get('Gifiphy'))
-    findText.add_image(user.presentation_url, g.url, g.number)
+    if int(id)>=0:
+        g = get_gif(id)
+        findText.add_image(user.presentation_url, g.url, g.number)
     if user.current_slide == user.current_max:
-        link = backend.getlink()
-        return redirect(url_for('download', link=link))
+        return redirect(url_for('download'))
     return redirect(url_for('chose'))
 
-@app.route('/download/<link>')
-def download(link):
+@app.route('/download')
+def download():
+    link = get_user(session.get('Gifiphy')).presentation_url
     clear_db(session.get('Gifiphy'))
     return render_template('download.html', link=link)
