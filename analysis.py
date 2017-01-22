@@ -74,7 +74,8 @@ def get_phrases(file_name):
 
     for line in open(file_name, 'r'):
         result.append([])
-        if (line == "") : pass
+        if (line == "\n") :
+            continue
         keywords = get_keywords(line)
         concepts = get_concepts(line)
         for word in keywords:
