@@ -14,8 +14,13 @@
         <header class="navbar navbar-fixed-top navbar-inverse">
             <div class="container">
                 <a href="{{url_for('index')}}" id="logo">GIFIPHY</a>
+                <p class='navbar-text'>No more boring lectures</p>
+                <nav>
+                    <a href='https://pennapps.com'><img class='navbar-right' src='http://2014s.pennapps.com/build/images/logo-light-with-shadow.png'></img></a>
+                </nav>
             </div>
         </header>
+        </nav>
         <div class='container'>
             {% block content %}
             {% endblock %}
